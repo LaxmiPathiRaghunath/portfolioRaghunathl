@@ -1,58 +1,82 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Laxmi Pathi, Raghunath - Drive Animation</title>
+  <title>Laxmi Pathi Raghunath - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #1a1a1a, #333);
       font-family: Arial, sans-serif;
-      color: white;
-    }
-
-    .road {
-      position: relative;
-      height: 100vh;
-      width: 100vw;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
       overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+    .container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .button {
+      background-color: #ff0080;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .button:hover {
+      background-color: #ff3399;
+    }
+    #typewriter {
+      font-size: 48px;
+      font-weight: bold;
+      margin-top: 40px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     }
 
     .car {
       position: absolute;
-      width: 80px;
-      height: 40px;
-      background: red;
-      border-radius: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 0;
+      width: 50px;
+      height: 50px;
+      z-index: 10;
       animation: drive 10s linear infinite;
     }
 
     .car:nth-child(2) {
-      top: 65%;
-      background: blue;
+      top: 60px;
       animation-delay: 2s;
     }
 
     @keyframes drive {
-      0% {
-        left: -100px;
-      }
-      100% {
-        left: 110%;
-      }
+      0% { left: -60px; }
+      100% { left: 110%; }
     }
 
     .trail {
       position: absolute;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
       white-space: nowrap;
-      animation: fadeout 6s forwards;
+      color: #ffcc00;
+      animation: fadeout 5s forwards;
     }
 
     @keyframes fadeout {
@@ -62,12 +86,40 @@
   </style>
 </head>
 <body>
-  <div class="road">
-    <div class="car" id="car1"></div>
-    <div class="car" id="car2"></div>
+
+  <!-- Cars driving at the top -->
+  <img src="https://img.icons8.com/emoji/48/car-emoji.png" class="car" id="car1" alt="car" />
+  <img src="https://img.icons8.com/emoji/48/car-emoji.png" class="car" id="car2" alt="car" />
+
+  <!-- Typewriter Animated Name -->
+  <h1 id="typewriter"></h1>
+
+  <!-- Portfolio Image and Resume Link -->
+  <div class="container">
+    <img src="A_3D-rendered_digital_image_showcases_a_neon-lit,_.png" alt="3D Portfolio Art">
+    <div class="overlay">
+      <a href="resume.html" class="button">View Resume</a>
+    </div>
   </div>
 
+  <!-- Script for typewriter and car trails -->
   <script>
+    // Typewriter animation
+    const name = "Laxmi Pathi, Raghunath";
+    const target = document.getElementById("typewriter");
+    let index = 0;
+
+    function typeLetter() {
+      if (index < name.length) {
+        target.innerHTML += name.charAt(index);
+        index++;
+        setTimeout(typeLetter, 150);
+      }
+    }
+
+    window.onload = typeLetter;
+
+    // Car trail effect
     function dropTrail(carId) {
       const car = document.getElementById(carId);
       const trail = document.createElement('div');
@@ -77,7 +129,7 @@
       trail.style.top = rect.top + window.scrollY + 'px';
       trail.style.left = rect.left + window.scrollX + 'px';
       document.body.appendChild(trail);
-      setTimeout(() => trail.remove(), 6000);
+      setTimeout(() => trail.remove(), 5000);
     }
 
     setInterval(() => {
@@ -85,5 +137,6 @@
       dropTrail('car2');
     }, 1000);
   </script>
+
 </body>
 </html>
