@@ -13,18 +13,19 @@
       color: #fff;
       text-align: center;
       overflow-x: hidden;
-      overflow-y: auto; /* ✅ enables scrolling */
     }
+
     .container {
       position: relative;
       width: 100%;
-      min-height: 100vh; /* ✅ ensures full height */
     }
+
     .container img.bg {
       width: 100%;
       height: auto;
       display: block;
     }
+
     .overlay {
       position: absolute;
       bottom: 40px;
@@ -32,6 +33,7 @@
       transform: translateX(-50%);
       z-index: 20;
     }
+
     .button {
       background-color: #ff0080;
       color: white;
@@ -42,18 +44,21 @@
       cursor: pointer;
       text-decoration: none;
     }
+
     .button:hover {
       background-color: #ff3399;
     }
+
     #typewriter {
       font-size: 48px;
       font-weight: bold;
-      margin: 20px 0;
+      margin: 40px 0 20px;
       color: white;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
       position: relative;
       z-index: 30;
     }
+
     .car {
       position: absolute;
       top: 0;
@@ -62,14 +67,17 @@
       z-index: 25;
       animation: drive 10s linear infinite;
     }
+
     .car:nth-of-type(2) {
       top: 60px;
       animation-delay: 2s;
     }
+
     @keyframes drive {
       0% { left: -80px; }
       100% { left: 110%; }
     }
+
     .trail {
       position: absolute;
       font-size: 18px;
@@ -78,6 +86,7 @@
       color: #ffcc00;
       animation: fadeout 5s forwards;
     }
+
     @keyframes fadeout {
       0% { opacity: 1; }
       100% { opacity: 0; }
@@ -90,10 +99,10 @@
   <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car1" alt="car">
   <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car2" alt="car">
 
-  <!-- Animated Name -->
+  <!-- Name Typing -->
   <h1 id="typewriter"></h1>
 
-  <!-- Portfolio Image & Resume Button -->
+  <!-- Background Image + Resume Button -->
   <div class="container">
     <img src="A_3D-rendered_digital_image_showcases_neon-lit,_.png" alt="3D Portfolio Art" class="bg">
     <div class="overlay">
@@ -101,8 +110,8 @@
     </div>
   </div>
 
-  <!-- Typewriter & Car Trail Scripts -->
   <script>
+    // Typewriter effect
     const name = "Laxmi Pathi, Raghunath";
     const target = document.getElementById("typewriter");
     let index = 0;
@@ -117,6 +126,7 @@
 
     window.onload = typeLetter;
 
+    // Car trails
     function dropTrail(carId) {
       const car = document.getElementById(carId);
       const trail = document.createElement('div');
