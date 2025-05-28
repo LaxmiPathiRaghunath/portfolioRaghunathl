@@ -19,7 +19,7 @@
       width: 100%;
       max-width: 100%;
     }
-    .container img {
+    .container img.bg {
       width: 100%;
       height: auto;
       display: block;
@@ -60,7 +60,7 @@
       animation: drive 10s linear infinite;
     }
 
-    .car:nth-child(2) {
+    .car:nth-of-type(2) {
       top: 60px;
       animation-delay: 2s;
     }
@@ -87,28 +87,26 @@
 </head>
 <body>
 
-  <!-- Cars using the colorful car image you provided -->
-  <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car1" alt="car" />
-  <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car2" alt="car" />
+  <!-- Cars with your custom image -->
+  <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car1" alt="car">
+  <img src="A_2D_digital_illustration_of_a_neon-lit_retro-styl.png" class="car" id="car2" alt="car">
 
   <!-- Typewriter Animated Name -->
   <h1 id="typewriter"></h1>
 
-  <!-- Portfolio Image and Resume Link -->
+  <!-- Background Image and Resume Button -->
   <div class="container">
-    <img src="A_3D-rendered_digital_image_showcases_neon-lit,_.png" alt="3D Portfolio Art">
+    <img src="A_3D-rendered_digital_image_showcases_neon-lit,_.png" alt="3D Portfolio Art" class="bg">
     <div class="overlay">
       <a href="resume.html" class="button">View Resume</a>
     </div>
   </div>
 
-  <!-- Script for typewriter and car trails -->
   <script>
-    // Typewriter animation
+    // Typewriter
     const name = "Laxmi Pathi, Raghunath";
     const target = document.getElementById("typewriter");
     let index = 0;
-
     function typeLetter() {
       if (index < name.length) {
         target.innerHTML += name.charAt(index);
@@ -116,10 +114,9 @@
         setTimeout(typeLetter, 150);
       }
     }
-
     window.onload = typeLetter;
 
-    // Car trail effect
+    // Car Trail Effect
     function dropTrail(carId) {
       const car = document.getElementById(carId);
       const trail = document.createElement('div');
